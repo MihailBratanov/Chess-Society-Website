@@ -1,0 +1,80 @@
+body {
+    background: url('../private/images/backgroundImage.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    
+  }
+  /*--- navigation bar ---*/
+  .navbar {
+    background:#000000;
+  }
+  .nav-link,
+  .navbar-brand {
+    color: #fff;
+    cursor: pointer;
+    padding-left: 20px;
+  }
+  .navbar-brand:hover{
+    color: rgb(255,0,0);
+  }
+  .navbar img{
+      width: 120px;
+      height: auto;
+      /* width: 0.5*auto; */
+      /* height: 0.5*auto; */
+  }
+  .nav-link {
+    margin-right: 1em !important;
+  }
+  .nav-link:hover {
+    color: rgb(255, 0, 0);
+  }
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+  header {
+    background-image: url('../private/images/backgroundImage.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+.sidenav{
+
+    width:40%;
+    position: relative;
+    z-index: 1;
+    top:0;
+    left: 0;
+    background-color: #000000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.login-form{
+    margin-top: 80%;
+}
+.register-form{
+    margin-top: 20%;
+}
+.login-main-text{
+    margin-top: 20%;
+    padding:60px;
+    color:#fff;
+
+}
+.login-main-text h2{
+    font-weight: 300;
+}
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
