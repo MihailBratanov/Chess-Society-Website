@@ -12,6 +12,8 @@ ini_set('display_startup_errors', TRUE);
 $query = "SELECT id FROM Members WHERE membership='officer'";
 $result_set = mysqli_query($db, $query);
 $officers = mysqli_fetch_assoc($result_set);
+
+
 ?>
 <div class="page-content" id="content">
     <header class="page-header header container-fluid">
@@ -33,8 +35,8 @@ $officers = mysqli_fetch_assoc($result_set);
                     <form action="tournamentCreate.php" method="post">
                         <div class="form-row ">
                             <label for="mainOrganiser">Main organiser:</label>
-                            <select  class="form-control">
-                                <option id="mainOrganiser" name="mainOrganiser"  selected>Please select...</option>
+                            <select id="mainOrganiser" name="mainOrganiser"  class="form-control">
+                                <option id="mainOrganiser" name="mainOrganiser" selected>Please select...</option>
                                 <?php foreach ($officers as $officer) { ?>
                                     <option><?php echo $officer; ?></option>
                                 <?php } ?>
@@ -62,13 +64,23 @@ $officers = mysqli_fetch_assoc($result_set);
             <?php
             if (isset($_POST['submit'])) { // Fetching variables of the form which travels in URL
                 $mainOrganiserId = $_POST['mainOrganiser'];
-         
+
                 $location = $_POST['inputLocation'];
                 $tournamentDate = $_POST['inputDate'];
                 if ($location != '' || $tournamentDate != '') {
                     //Insert Query of SQL
+
+                    $tournamentCreateQuery = mysqli_query($db, "insert into Tournaments(main_organiser_id, location, tournament_date) values ($mainOrganiserId, '$location', '$tournamentDate')");
+
+                    //Insert Query to update TournamentOragnisers
+
+                    $tournamentIdQuery = "SELECT id FROM Tournaments ORDER BY id DESC LIMIT 1";
+                    $newResult_set = mysqli_query($db, $tournamentIdQuery);
+                    $ids = mysqli_fetch_assoc($newResult_set);
+                    $realId= intval($ids['id']);
                     
-                    $query = mysqli_query($db, "insert into Tournaments(main_organiser_id, location, tournament_date) values ($mainOrganiserId, '$location', '$tournamentDate')");
+                    
+                    $tournamentOragnisersCreateQuery = mysqli_query($db, "insert into TournamentOrganisers(tournament_id, organiser) values ($realId, $mainOrganiserId)");
                     echo "<br/><br/><span>Data Inserted successfully...!!</span>";
                 } else {
                     echo "<p>Insertion Failed <br/> Some Fields are Blank....!!</p>";
