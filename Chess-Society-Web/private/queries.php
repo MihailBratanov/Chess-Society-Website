@@ -1,4 +1,5 @@
 <?php 
+include "initialise.php";
 /**
 TODO: 
 
@@ -14,9 +15,10 @@ TODO:
 global $db;
 
 function createNewUser($firstName, $lastName, $membership, $email, $username, $password){
+	
 	$sql = "INSERT INTO Memebrs ";
 	$sql .= "(first_name, last_name, memebrship, email, username, pass)";
-	$sql .= "VALUES (".$firstName.",".$lastName.",".$memebrship.",".$email.",".$username.",".$hashedPass.")" ;
+	$sql .= "VALUES (".$firstName.",".$lastName.",".$membership.",".$email.",".$username.",".$password.")" ;
 
 	mysqli_query($db, $sql);
 }
@@ -77,6 +79,14 @@ function getEventsByName($date){
 	$result = mysqli_query($db, $sql);
 
 	return $result;
+}
+function createNewTournament($mainOrganiserId, $location, $tournamentDate){
+	$db=db_connect();
+	$sql = "INSERT INTO Tournaments ";
+	$sql .= "(main_organiser_id,location,tournament_date)";
+	$sql .= "VALUES (".$mainOrganiserId.",".$location.",".$tournamentDate.")" ;
+
+	mysqli_query($db, $sql);
 }
 
 
