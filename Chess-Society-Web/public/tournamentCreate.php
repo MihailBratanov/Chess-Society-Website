@@ -32,7 +32,7 @@ $officers = mysqli_fetch_assoc($result_set);
                 <div class="card-body p-5">
 
 
-                    <form action="tournamentCreate.php" method="post">
+                    <form action="submitTournament.php" method="post">
                         <div class="form-row ">
                             <label for="mainOrganiser">Main organiser:</label>
                             <select id="mainOrganiser" name="mainOrganiser"  class="form-control">
@@ -61,29 +61,4 @@ $officers = mysqli_fetch_assoc($result_set);
             </body>
 
             </html>
-            <?php
-            if (isset($_POST['submit'])) { // Fetching variables of the form which travels in URL
-                $mainOrganiserId = $_POST['mainOrganiser'];
-
-                $location = $_POST['inputLocation'];
-                $tournamentDate = $_POST['inputDate'];
-                if ($location != '' || $tournamentDate != '') {
-                    //Insert Query of SQL
-
-                    $tournamentCreateQuery = mysqli_query($db, "insert into Tournaments(main_organiser_id, location, tournament_date) values ($mainOrganiserId, '$location', '$tournamentDate')");
-
-                    //Insert Query to update TournamentOragnisers
-
-                    $tournamentIdQuery = "SELECT id FROM Tournaments ORDER BY id DESC LIMIT 1";
-                    $newResult_set = mysqli_query($db, $tournamentIdQuery);
-                    $ids = mysqli_fetch_assoc($newResult_set);
-                    $realId= intval($ids['id']);
-                    
-                    
-                    $tournamentOragnisersCreateQuery = mysqli_query($db, "insert into TournamentOrganisers(tournament_id, organiser) values ($realId, $mainOrganiserId)");
-                    echo "<br/><br/><span>Data Inserted successfully...!!</span>";
-                } else {
-                    echo "<p>Insertion Failed <br/> Some Fields are Blank....!!</p>";
-                }
-            }
-            ?>
+           

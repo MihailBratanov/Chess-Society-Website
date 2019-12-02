@@ -21,7 +21,7 @@ $organisers_set = mysqli_query($db, $queryForTournamnentOrganisers);
 
 //Get details from TournamentParticipants
 
-$queryForTournamnentParticipants= "SELECT * FROM TournamentParticipants WHERE tournament_id=$tournamentId";
+$queryForTournamnentParticipants = "SELECT * FROM TournamentParticipants WHERE tournament_id=$tournamentId";
 $participants_set = mysqli_query($db, $queryForTournamnentParticipants);
 
 ?>
@@ -56,19 +56,11 @@ $participants_set = mysqli_query($db, $queryForTournamnentParticipants);
                         <table class="table table-hover table-inverse">
                             <h1 class="font-weight-light">Tournament organisers</h1>
                             <tr>
-                                <th>ID</th>
-                                <th>Tournament ID</th>
                                 <th>Organiser ID</th>
                             </tr>
                             <?php
                             while ($tournamentOrganiserDetails = mysqli_fetch_assoc($organisers_set)) { ?>
                                 <tr>
-                                    <td>
-                                        <?php echo $tournamentOrganiserDetails['id']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $tournamentOrganiserDetails['tournament_id']; ?>
-                                    </td>
                                     <td>
                                         <?php echo $tournamentOrganiserDetails['organiser']; ?>
                                     </td>
@@ -90,19 +82,12 @@ $participants_set = mysqli_query($db, $queryForTournamnentParticipants);
                         <table class="table table-hover table-inverse">
                             <h1 class="font-weight-light">Tournament participants</h1>
                             <tr>
-                                <th>ID</th>
-                                <th>Tournament ID</th>
+
                                 <th>Participant ID</th>
                             </tr>
                             <?php
                             while ($tournamentOrganiserDetails = mysqli_fetch_assoc($organisers_set)) { ?>
                                 <tr>
-                                    <td>
-                                        <?php echo $tournamentParticipantsDetails['id']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $tournamentParticipantsDetails['tournament_id']; ?>
-                                    </td>
                                     <td>
                                         <?php echo $tournamentParticipantsDetails['participant']; ?>
                                     </td>
