@@ -67,7 +67,7 @@ $participants_set = mysqli_query($db, $queryForTournamnentParticipants);
                                 </tr>
                             <?php } ?>
                         </table>
-                        <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+                        <a href="<?php echo ('tournamentOrganisersAdd.php?id=' . $tournamentDetails['id']); ?>" class="btn btn-primary" role="button">Edit</a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@ $participants_set = mysqli_query($db, $queryForTournamnentParticipants);
                                 </tr>
                             <?php } ?>
                         </table>
-                        <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+                        <a href="<?php echo ('tournamentParticipantsAdd.php?id=' . $tournamentDetails['id']); ?>" class="btn btn-primary" role="button">Add participant</a>
                     </div>
                 </div>
             </div>
